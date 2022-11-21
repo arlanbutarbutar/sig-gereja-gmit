@@ -1,0 +1,5 @@
+konten:
+1. Informasi lokasi gerja
+2. Jumlah jiwa tiap gereja
+3. Nama pendeta tiap gereja
+4. Fasilitas gereja
