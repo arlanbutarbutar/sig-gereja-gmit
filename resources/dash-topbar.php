@@ -8,7 +8,7 @@
     <div>
       <a class="navbar-brand brand-logo d-flex" href="./">
         <style>@media screen and (max-width: 400px){.img-brand{display: none;}}</style>
-        <img src="../assets/img/logo.png" alt="" class="img-brand" style="width: 60px;height: 60px;">
+        <img src="../assets/img/logo-gmit.png" alt="" class="img-brand" style="width: 60px;height: 60px;">
       </a>
       <a class="nav-link navbar-brand brand-logo-mini" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
         <img class="img-xs rounded-circle" src="../assets/img/user.png" style="width: 40px;height: 40px;" alt="Profile image" />
