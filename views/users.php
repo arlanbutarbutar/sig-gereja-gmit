@@ -51,6 +51,7 @@ $_SESSION['page-url'] = "users";
                           <th scope="col" class="text-center">#</th>
                           <th scope="col" class="text-center">Nama</th>
                           <th scope="col" class="text-center">Email</th>
+                          <th scope="col" class="text-center">Role</th>
                           <th scope="col" class="text-center">Tgl Buat</th>
                           <th scope="col" class="text-center">Tgl Ubah</th>
                           <th scope="col" class="text-center">Aksi</th>
@@ -64,6 +65,7 @@ $_SESSION['page-url'] = "users";
                               <th scope="row"><?= $no; ?></th>
                               <td><?= $row['username'] ?></td>
                               <td><?= $row['email'] ?></td>
+                              <td><?= $row['role'] ?></td>
                               <td>
                                 <div class="badge badge-opacity-success">
                                   <?php $dateCreate = date_create($row['created_at']);
@@ -97,6 +99,14 @@ $_SESSION['page-url'] = "users";
                                             <div class="mb-3">
                                               <label for="email" class="form-label">Email <small class="text-danger">*</small></label>
                                               <input type="email" name="email" value="<?= $row['email'] ?>" class="form-control text-center" id="email" placeholder="Email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label for="operator" class="form-label">Jadikan operator? <small class="text-danger">*</small></label>
+                                              <select name="role" id="operator" class="form-select" aria-label="Default select example" required>
+                                                <?php foreach ($users_role as $row_ur) : ?>
+                                                  <option value="<?= $row_ur['id_role'] ?>"><?= $row_ur['role'] ?></option>
+                                                <?php endforeach; ?>
+                                              </select>
                                             </div>
                                           </div>
                                           <div class="modal-footer justify-content-center border-top-0">
@@ -172,6 +182,14 @@ $_SESSION['page-url'] = "users";
                     <label for="password" class="form-label">Password <small class="text-danger">*</small></label>
                     <input type="text" name="password" class="form-control text-center" id="kata-sandi" minlength="8" placeholder="Password" required>
                     <input type="button" value="Generate Password" class="btn btn-link btn-sm text-decoration-none" onclick="random_all();">
+                  </div>
+                  <div class="mb-3">
+                    <label for="operator" class="form-label">Jadikan operator? <small class="text-danger">*</small></label>
+                    <select name="role" id="operator" class="form-select" aria-label="Default select example" required>
+                      <?php foreach ($users_role as $row_ur) : ?>
+                        <option value="<?= $row_ur['id_role'] ?>"><?= $row_ur['role'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
                 <div class="modal-footer border-top-0 justify-content-center">

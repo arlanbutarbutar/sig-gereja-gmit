@@ -52,7 +52,8 @@ if (isset($_SESSION['data-user'])) {
     }
     $password = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $data['password']))));
     $password = password_hash($password, PASSWORD_DEFAULT);
-    mysqli_query($conn, "INSERT INTO users(username,email,password) VALUES('$username','$email','$password')");
+    $id_role = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $data['role']))));
+    mysqli_query($conn, "INSERT INTO users(id_role,username,email,password) VALUES('$id_role','$username','$email','$password')");
     return mysqli_affected_rows($conn);
   }
   function edit_user($data)
@@ -70,8 +71,9 @@ if (isset($_SESSION['data-user'])) {
         return false;
       }
     }
+    $id_role = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $data['role']))));
     $updated_at = date("Y-m-d " . $time);
-    mysqli_query($conn, "UPDATE users SET username='$username', email='$email', updated_at='$updated_at' WHERE id_user='$id_user'");
+    mysqli_query($conn, "UPDATE users SET id_role='$id_role', username='$username', email='$email', updated_at='$updated_at' WHERE id_user='$id_user'");
     return mysqli_affected_rows($conn);
   }
   function delete_user($data)

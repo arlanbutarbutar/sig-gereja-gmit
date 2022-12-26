@@ -46,7 +46,7 @@ if (isset($_POST['cari-gereja'])) {
   exit();
 }
 
-$frontFasilitas=mysqli_query($conn, "SELECT * FROM fasilitas");
+$frontFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas");
 
 if (!isset($_SESSION['data-user'])) {
   if (isset($_POST['masuk'])) {
@@ -66,15 +66,15 @@ if (isset($_SESSION['data-user'])) {
     $selectFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas WHERE id_fasilitas!='$id' ORDER BY nama_fasilitas ASC");
     $selectCheckFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas WHERE id_fasilitas='$id' ORDER BY nama_fasilitas ASC");
   }
-  $countUsers=mysqli_query($conn, "SELECT * FROM users WHERE id_user!='$idUser'");
-  $countUsers=mysqli_num_rows($countUsers);
-  $countFasilitas=mysqli_query($conn, "SELECT * FROM fasilitas");
-  $countFasilitas=mysqli_num_rows($countFasilitas);
-  $countGereja=mysqli_query($conn, "SELECT * FROM gereja");
-  $countGereja=mysqli_num_rows($countGereja);
-  $countPendeta=mysqli_query($conn, "SELECT * FROM pendeta");
-  $countPendeta=mysqli_num_rows($countPendeta);
-  $dataAGereja=mysqli_query($conn, "SELECT * FROM gereja ORDER BY id_gereja DESC");
+  $countUsers = mysqli_query($conn, "SELECT * FROM users WHERE id_user!='$idUser'");
+  $countUsers = mysqli_num_rows($countUsers);
+  $countFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas");
+  $countFasilitas = mysqli_num_rows($countFasilitas);
+  $countGereja = mysqli_query($conn, "SELECT * FROM gereja");
+  $countGereja = mysqli_num_rows($countGereja);
+  $countPendeta = mysqli_query($conn, "SELECT * FROM pendeta");
+  $countPendeta = mysqli_num_rows($countPendeta);
+  $dataAGereja = mysqli_query($conn, "SELECT * FROM gereja ORDER BY id_gereja DESC");
 
   $profile = mysqli_query($conn, "SELECT * FROM users WHERE id_user='$idUser'");
   if (isset($_POST['ubah-profile'])) {
@@ -86,7 +86,8 @@ if (isset($_SESSION['data-user'])) {
     }
   }
 
-  $users = mysqli_query($conn, "SELECT * FROM users WHERE id_user!='$idUser' ORDER BY id_user DESC");
+  $users = mysqli_query($conn, "SELECT * FROM users JOIN users_role ON users.id_role=users_role.id_role WHERE users.id_user!='$idUser' ORDER BY users.id_user DESC");
+  $users_role = mysqli_query($conn, "SELECT * FROM users_role WHERE id_role>1");
   if (isset($_POST['tambah-user'])) {
     if (add_user($_POST) > 0) {
       $_SESSION['message-success'] = "Pengguna " . $_POST['username'] . " berhasil ditambahkan.";

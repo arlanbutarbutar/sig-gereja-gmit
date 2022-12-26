@@ -8,5 +8,5 @@
 <link rel="stylesheet" href="../assets/simple-line-icons/css/simple-line-icons.css">
 <link rel="stylesheet" href="../assets/css/vendor.bundle.base.css">
 <link rel="stylesheet" href="../assets/css/style-dash.css">
-<link rel="shortcut icon" href="../assets/img/logo.png" />
+<link rel="shortcut icon" href="../assets/img/logo-gmit.png" />
 <script src="../assets/sweetalert/dist/sweetalert2.all.min.js"></script>

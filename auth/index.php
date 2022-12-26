@@ -30,7 +30,7 @@ $_SESSION['page-url'] = "./";
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-center py-5 px-4 px-sm-5 shadow">
-              <img src="../assets/img/logo.png" style="width: 120px;margin-bottom: 10px;" alt="Gereja GMIT">
+              <img src="../assets/img/logo-gmit.png" style="width: 120px;margin-bottom: 10px;" alt="Gereja GMIT">
               <h2>SIG Gereja GMIT</h2>
               <h6 class="fw-light">Masuk untuk melanjutkan.</h6>
               <form class="pt-3" action="" method="POST">

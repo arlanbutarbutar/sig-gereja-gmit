@@ -13,15 +13,15 @@
             <li class="scroll-to-section"><a href="./#top" <?php if ($_SESSION['page-name'] == "Beranda") {
                                                               echo " class='active'";
                                                             } ?>>Beranda</a></li>
+            <li class="scroll-to-section"><a href="profil" <?php if ($_SESSION['page-name'] == "Profil") {
+                                                                echo " class='active'";
+                                                              } ?>>Profil</a></li>
             <li class="scroll-to-section"><a href="gereja" <?php if ($_SESSION['page-name'] == "Gereja") {
                                                               echo " class='active'";
                                                             } ?>>Gereja</a></li>
             <li class="scroll-to-section"><a href="lokasi" <?php if ($_SESSION['page-name'] == "Lokasi") {
                                                               echo " class='active'";
                                                             } ?>>Lokasi</a></li>
-            <li class="scroll-to-section"><a href="fasilitas" <?php if ($_SESSION['page-name'] == "Fasilitas") {
-                                                                echo " class='active'";
-                                                              } ?>>Fasilitas</a></li>
             <style>
               .mobile-view {
                 display: none;
