@@ -33,9 +33,11 @@ $_SESSION['page-url'] = "./";
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link action active ps-0" id="overview" data-bs-toggle="tab" role="tab" style="cursor: pointer;" aria-controls="overview" aria-selected="true">Ringkasan</a>
-                    </li>
+                    <?php if ($_SESSION['data-user']['role'] != 2) { ?>
+                      <li class="nav-item">
+                        <a class="nav-link action active ps-0" id="overview" data-bs-toggle="tab" role="tab" style="cursor: pointer;" aria-controls="overview" aria-selected="true">Ringkasan</a>
+                      </li>
+                    <?php } ?>
                     <li class="nav-item">
                       <a class="nav-link action border-0" id="maps" data-bs-toggle="tab" style="cursor: pointer;" role="tab" aria-selected="false">Maps</a>
                     </li>
@@ -52,20 +54,34 @@ $_SESSION['page-url'] = "./";
           </div>
         </div>
         <?php require_once("../resources/dash-footer.php") ?>
-        <script>
-          $(document).ready(function() {
-            $('.action').click(function() {
-              var menu = $(this).attr('id');
-              if (menu == "overview") {
-                $('.data-main').load('overview.php');
-              }
-              if (menu == "maps") {
-                $('.data-main').load('maps.php');
-              }
+        <?php if ($_SESSION['data-user']['role'] != 2) { ?>
+          <script>
+            $(document).ready(function() {
+              $('.action').click(function() {
+                var menu = $(this).attr('id');
+                if (menu == "overview") {
+                  $('.data-main').load('overview.php');
+                }
+                if (menu == "maps") {
+                  $('.data-main').load('maps.php');
+                }
+              });
+              $('.data-main').load('overview.php');
             });
-            $('.data-main').load('overview.php');
-          });
-        </script>
+          </script>
+        <?php } else if ($_SESSION['data-user']['role'] == 2) { ?>
+          <script>
+            $(document).ready(function() {
+              $('.action').click(function() {
+                var menu = $(this).attr('id');
+                if (menu == "maps") {
+                  $('.data-main').load('maps.php');
+                }
+              });
+              $('.data-main').load('maps.php');
+            });
+          </script>
+        <?php } ?>
 </body>
 
 </html>

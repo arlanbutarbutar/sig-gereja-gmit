@@ -17,6 +17,7 @@ if (!isset($_SESSION['data-user'])) {
       if (password_verify($password, $row['password'])) {
         $_SESSION['data-user'] = [
           'id' => $row['id_user'],
+          'role' => $row['id_role'],
           'email' => $row['email'],
           'username' => $row['username'],
         ];
