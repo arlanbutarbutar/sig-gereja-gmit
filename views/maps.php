@@ -17,8 +17,8 @@
           iconSize: [38, 40],
         })
 
-        <?php if (mysqli_num_rows($select_locationMaps) > 0) {
-          while ($row = mysqli_fetch_assoc($select_locationMaps)) {
+        <?php if (mysqli_num_rows($select_locationO) > 0) {
+          while ($row = mysqli_fetch_assoc($select_locationO)) {
         ?>
             L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>], {
               icon: iconGereja

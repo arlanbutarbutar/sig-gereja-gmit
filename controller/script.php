@@ -59,6 +59,7 @@ if (!isset($_SESSION['data-user'])) {
 
 if (isset($_SESSION['data-user'])) {
   $idUser = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_SESSION['data-user']['id']))));
+  $userName = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_SESSION['data-user']['username']))));
   if (!isset($_GET['id-fasilitas'])) {
     $selectFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas ORDER BY nama_fasilitas ASC");
   } else if (isset($_GET['id-fasilitas'])) {
@@ -139,7 +140,6 @@ if (isset($_SESSION['data-user'])) {
     }
   }
 
-  $gereja = mysqli_query($conn, "SELECT * FROM gereja ORDER BY gereja.id_gereja DESC");
   if (isset($_POST['tambah-gereja'])) {
     if (add_gereja($_POST) > 0) {
       $_SESSION['message-success'] = "Nama gereja berhasil ditambahkan.";
@@ -182,7 +182,6 @@ if (isset($_SESSION['data-user'])) {
   }
 
   $selectGereja = mysqli_query($conn, "SELECT * FROM gereja");
-  $pendeta = mysqli_query($conn, "SELECT pendeta.id_pendeta, pendeta.id_gereja, pendeta.img_pendeta, pendeta.nama_pendeta, pendeta.telp, pendeta.status, pendeta.created_at, pendeta.updated_at, gereja.nama_gereja FROM pendeta JOIN gereja ON pendeta.id_gereja=gereja.id_gereja ORDER BY pendeta.id_pendeta DESC");
   if (isset($_POST['tambah-pendeta'])) {
     if (add_pendeta($_POST) > 0) {
       $_SESSION['message-success'] = "Nama pendeta berhasil ditambahkan.";
@@ -206,5 +205,16 @@ if (isset($_SESSION['data-user'])) {
       header("Location: " . $_SESSION['page-url']);
       exit();
     }
+  }
+
+  if ($_SESSION['data-user']['role'] == 1) {
+    $select_locationO = mysqli_query($conn, "SELECT * FROM gereja");
+    $gereja = mysqli_query($conn, "SELECT * FROM gereja ORDER BY gereja.id_gereja DESC");
+    $pendeta = mysqli_query($conn, "SELECT pendeta.id_pendeta, pendeta.id_gereja, pendeta.img_pendeta, pendeta.nama_pendeta, pendeta.telp, pendeta.status, pendeta.created_at, pendeta.updated_at, gereja.nama_gereja FROM pendeta JOIN gereja ON pendeta.id_gereja=gereja.id_gereja ORDER BY pendeta.id_pendeta DESC");
+  }
+  if ($_SESSION['data-user']['role'] == 2) {
+    $select_locationO = mysqli_query($conn, "SELECT * FROM gereja WHERE nama_gereja='$userName'");
+    $gereja = mysqli_query($conn, "SELECT * FROM gereja WHERE nama_gereja='$userName' ORDER BY gereja.id_gereja DESC");
+    $pendeta = mysqli_query($conn, "SELECT pendeta.id_pendeta, pendeta.id_gereja, pendeta.img_pendeta, pendeta.nama_pendeta, pendeta.telp, pendeta.status, pendeta.created_at, pendeta.updated_at, gereja.nama_gereja FROM pendeta JOIN gereja ON pendeta.id_gereja=gereja.id_gereja WHERE gereja.nama_gereja='$userName' ORDER BY pendeta.id_pendeta DESC");
   }
 }
