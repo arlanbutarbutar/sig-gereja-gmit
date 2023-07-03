@@ -22,6 +22,9 @@
             <li class="scroll-to-section"><a href="lokasi" <?php if ($_SESSION['page-name'] == "Lokasi") {
                                                               echo " class='active'";
                                                             } ?>>Lokasi</a></li>
+            <li class="scroll-to-section"><a href="database-gmit" <?php if ($_SESSION['page-name'] == "Database GMIT") {
+                                                              echo " class='active'";
+                                                            } ?>>Database GMIT</a></li>
             <style>
               .mobile-view {
                 display: none;
