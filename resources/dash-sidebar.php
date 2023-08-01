@@ -31,7 +31,7 @@
     <li class="nav-item">
       <a class="nav-link" style="cursor: pointer;" onclick="window.location.href='pendeta'">
         <i class="mdi mdi-account-star menu-icon"></i>
-        <span class="menu-title">Pendeta</span>
+        <span class="menu-title">Pengurus</span>
       </a>
     </li>
     <li class="nav-item nav-category"></li>
